@@ -37,8 +37,9 @@ function render(variables = {}) {
           <h2>${variables.role}</h2>
           <h3>${variables.city} ${variables.country}</h3>
           <ul class="${variables.socialMediaPosition}">
-            <li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>
+          
+            <li><a ${variables.twitter} == null ? href="https://twitter.com/" : href="https://twitter.com/${variables.twitter}";><i class="fab fa-twitter"></i></a></li>
+            <li><a == null ? href="https://github.com/" : href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>
             <li><a href="https://www.linkedin.com/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>
             <li><a href="https://www.instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
@@ -60,10 +61,10 @@ window.onload = function() {
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
-    twitter: "https://twitter.com/",
-    github: "https://github.com",
-    linkedin: "https://www.linkedin.com/",
-    instagram: "https://www.instagram.com/",
+    twitter: null,
+    github: null,
+    linkedin: null,
+    instagram: null,
     name: "",
     lastname: "",
     role: "",
@@ -79,7 +80,7 @@ window.onload = function() {
       let values = {};
       values[attribute] =
         this.value == "" || this.value == "null"
-          ? ''
+          ? ""
           : this.value == "true"
           ? true
           : this.value == "false"
